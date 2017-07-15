@@ -2,9 +2,13 @@
 
 #include "ofMain.h"
 #include "baseType.h"
+#include "settings.h"
+
 #include "basisCube.h"
+#include "CollapseSurface/CollapseSurface.h"
 
 using namespace glm;
+
 
 
 

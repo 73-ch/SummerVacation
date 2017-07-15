@@ -16,7 +16,7 @@ using namespace glm;
 class basisCube : public baseType {
 public:
     basisCube(ofVboMesh* g_mesh);
-    void update();
+    void update(float time);
     void remove();
 private:
     vec3 size;

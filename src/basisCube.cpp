@@ -25,7 +25,7 @@ basisCube::basisCube(ofVboMesh* g_mesh):baseType(g_mesh){
     index_num = mesh->getIndices().size() - start_index;
 };
 
-void basisCube::update() {
+void basisCube::update(float time) {
     
 }
 

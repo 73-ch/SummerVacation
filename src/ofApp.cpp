@@ -1,4 +1,5 @@
 #include "ofApp.h"
+#include "settings.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -6,16 +7,23 @@ void ofApp::setup(){
     
     point_color = false;
     
-    basis_size = vec3(200);
-    mesh.setMode(OF_PRIMITIVE_LINES);
+    basis_size = vec3(BASIS_SIZE);
+
     
     shapes.push_back(new basisCube(&mesh));
+    shapes.push_back(new CollapseSurface(&mesh));
+    
     mesh.disableColors();
+    mesh.setMode(OF_PRIMITIVE_LINES);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    float time = ofGetElapsedTimef();
     
+    if (time < 1.) mesh.disableColors();
+    
+    for (int i = 0; i < shapes.size(); i++) shapes[i]->update(time);
 }
 
 //--------------------------------------------------------------
@@ -41,6 +49,9 @@ void ofApp::keyPressed(int key){
             mesh.setMode(OF_PRIMITIVE_POINTS);
         }
         point_color = !point_color;
+    } else if (key == OF_KEY_F1) {
+        vector <ofIndexType> indices = mesh.getIndices();
+        for (int i = 0; i < indices.size(); i++) cout << ofToString(indices[i]) << endl;
     }
 }
 

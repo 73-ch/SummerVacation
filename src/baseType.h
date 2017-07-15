@@ -17,6 +17,7 @@ class baseType {
     int start_index;
     ofColor color;
     ofVboMesh* mesh;
+    vector<ofIndexType> indices;
     
     baseType(ofVboMesh* g_mesh) {
         mesh = g_mesh;
@@ -24,6 +25,10 @@ class baseType {
         verts_num = 0;
     }
     
-    virtual void update(){};
-    virtual void remove(){};
+    void set() {
+        mesh->addIndices(indices);
+    };
+    
+    virtual void update(float time) {};
+    virtual void remove() {};
 };
