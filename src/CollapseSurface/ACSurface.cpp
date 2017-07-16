@@ -9,10 +9,9 @@
 #include "ACSurface.h"
 
 ACSurface::ACSurface(ofVboMesh* g_mesh) {
-//    start_index = mesh->getIndices().size();
     delete_flag = false;
-    
     mesh = g_mesh;
+    start_index = mesh->getNumIndices();
     
     int i = floor(ofRandom(2)) + 4 * floor(ofRandom(2));
     axis[0] = i;
@@ -48,6 +47,8 @@ ACSurface::ACSurface(ofVboMesh* g_mesh) {
 }
 
 void ACSurface::update(float time) {
+    if (delete_flag) return;
+    
     float t = exp(time - generate_time) / 4.;
     
     float v = sqrt(t) * BASIS_SIZE;
@@ -67,11 +68,9 @@ void ACSurface::update(float time) {
         mesh->setVertex(positions[1], vec3(BASIS_SIZE - v, BASIS_SIZE * (1 - t), 0));
     }
     
-    if (t > 1 && !delete_flag) {
-        for (int i = 0; i < indices.size(); i++) {
-//            mesh->removeIndex(start_index + i);
-        }
-        delete this;
+    if (t > 1) {
+        for (int i = 0; i < indices.size(); i++) mesh->removeIndex(start_index);
         delete_flag = true;
-    };
+
+    }
 }
