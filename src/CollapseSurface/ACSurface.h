@@ -19,6 +19,9 @@ class ACSurface {
 private:
     array<int, 2> positions;
     array<int, 2> axis;
+    vector<ofIndexType> indices;
     float generate_time;
     ofVboMesh* mesh;
+    int start_index;
+    bool delete_flag;
 };
