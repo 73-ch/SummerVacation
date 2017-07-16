@@ -12,9 +12,9 @@
 using namespace glm;
 
 class ACSurface {
-    public:
-        ACSurface(ofVboMesh* g_mesh);
-        void update(float time);
+public:
+    ACSurface(ofVboMesh* g_mesh);
+    void update(float time);
     
 private:
     array<int, 2> positions;

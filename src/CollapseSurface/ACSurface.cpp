@@ -11,7 +11,6 @@
 ACSurface::ACSurface(ofVboMesh* g_mesh) {
     delete_flag = false;
     mesh = g_mesh;
-    start_index = mesh->getNumIndices();
     
     int i = floor(ofRandom(2)) + 4 * floor(ofRandom(2));
     axis[0] = i;
@@ -41,6 +40,7 @@ ACSurface::ACSurface(ofVboMesh* g_mesh) {
     indices.push_back(axis[1]);
     indices.push_back(axis[0]);
     
+    start_index = mesh->getNumIndices();
     mesh->addIndices(indices);
     
     generate_time = ofGetElapsedTimef();
@@ -49,8 +49,7 @@ ACSurface::ACSurface(ofVboMesh* g_mesh) {
 void ACSurface::update(float time) {
     if (delete_flag) return;
     
-    float t = exp(time - generate_time) / 4.;
-    
+    float t = int((exp(time - generate_time) - 1.0) * 58197) * 0.00001;
     float v = sqrt(t) * BASIS_SIZE;
     mesh->getVertex(positions[0]);
     
@@ -69,8 +68,8 @@ void ACSurface::update(float time) {
     }
     
     if (t > 1) {
-        for (int i = 0; i < indices.size(); i++) mesh->removeIndex(start_index);
+        // 3
+        for (int i = 0; i < indices.size(); i++) mesh->removeIndex(24);
         delete_flag = true;
-
     }
 }

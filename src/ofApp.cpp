@@ -19,6 +19,8 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    ofSetWindowTitle(ofToString(ofGetFrameRate()));
+    
     float time = ofGetElapsedTimef();
     
     if (time < 1.) mesh.disableColors();

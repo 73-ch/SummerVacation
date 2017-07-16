@@ -15,8 +15,10 @@ CollapseSurface::CollapseSurface(ofVboMesh* g_mesh):baseType(g_mesh){
 };
 
 void CollapseSurface::update(float time) {
-    int r = ofRandom(8);
-    if (r == 0) surfaces.push_back(new ACSurface(mesh));
+    // 1
+    if (int(ofRandom(8)) == 0)surfaces.push_back(new ACSurface(mesh));
+    // 2 
+//    for (int i = 0; i < 100; i++)surfaces.push_back(new ACSurface(mesh));
     for (int i = 0; i < surfaces.size(); i++) surfaces[i]->update(time);
 }
 
