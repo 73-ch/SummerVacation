@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "ofMain.h"
+#include "settings.h"
 #include "baseType.h"
 #include "ACSurface.h"
 

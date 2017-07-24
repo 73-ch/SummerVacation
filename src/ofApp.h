@@ -1,11 +1,13 @@
 #pragma once
 
-#include "ofMain.h"
-#include "baseType.h"
 #include "settings.h"
+#include "baseType.h"
 
 #include "basisCube.h"
+
 #include "CollapseSurface/CollapseSurface.h"
+#include "RandomLine/RandomLine.h"
+
 
 using namespace glm;
 

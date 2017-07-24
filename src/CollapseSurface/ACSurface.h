@@ -6,7 +6,6 @@
 //
 //
 //
-#include "ofMain.h"
 #include "settings.h"
 
 using namespace glm;
