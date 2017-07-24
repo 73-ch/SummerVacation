@@ -5,10 +5,21 @@
 //  Created by nami on 2017/07/22.
 //
 //
+#pragma once
 
-#ifndef RandomLine_hpp
-#define RandomLine_hpp
+#include "settings.h"
+#include "baseType.h"
 
-#include <stdio.h>
+using namespace glm;
 
-#endif /* RandomLine_hpp */
+class RandomLine : public baseType {
+public:
+    RandomLine(ofVboMesh* g_mesh);
+    void setup();
+    void update(float time);
+    void remove();
+private:
+    vec3 size;
+    
+    vector <ofIndexType> indices;
+};
