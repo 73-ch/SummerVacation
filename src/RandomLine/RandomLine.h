@@ -20,6 +20,7 @@ public:
     void remove();
 private:
     vec3 size;
+    int selectVertex(int g_vert);
     
     vector <ofIndexType> indices;
 };
