@@ -14,14 +14,14 @@ IndexManager::IndexManager(ofVboMesh* g_mesh) {
 };
 
 // referenceにsetする関数(iがindex, kがkeyのポインタ)
-void IndexManager::set(int i, int& k) {
+void IndexManager::set(int i, int &k) {
     // k : key, i : index
     k = key_num;
     reference[k] = mesh->getNumIndices();
     mesh->addIndex(ofIndexType(i));
 };
 
-void IndexManager::set(vector<int> ks, vector<int> is, vector<int&> rs) {
+void IndexManager::set(vector<int> ks, vector<int> is, vector<int> &rs) {
     // ks : key, is : index, rs : response
     for (int i = 0; i < ks.size(); i++) {
         reference[ks[i]] = mesh->getNumIndices();
@@ -46,8 +46,8 @@ int IndexManager::getIndex(int key) {
     return reference[key];
 };
 
-void IndexManager::getIndices(vector<int> ks, vector<int*> rs) {
-    for (int i = 0; i < ks.size(); i++) rs.push_back(&reference[ks[i]]);
+void IndexManager::getIndices(vector<int> ks, vector<int> &rs) {
+    for (int i = 0; i < ks.size(); i++) rs.push_back(reference[ks[i]]);
 };
 
 // drawコールの前に読んでそれぞれのbaseTypeが持つindexの情報を更新する（一回のみの呼び出し）

@@ -14,12 +14,12 @@
 class IndexManager {
     public:
     IndexManager(ofVboMesh* g_mesh);
-    void set(int i, int& k);
-    void set(vector <int> ks, vector <int> is, vector <int&> rs);
+    void set(int i, int &k);
+    void set(vector <int> ks, vector <int> is, vector <int> &rs);
     void advanceTriger();
     void remove(int key);
     int getIndex(int key);
-    void getIndices(vector<int> ks, vector <int*> rs);
+    void getIndices(vector<int> ks, vector <int> &rs);
     
     private:
     void advanceNumber();
